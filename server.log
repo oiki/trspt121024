@@ -3,19 +3,5 @@
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5001
 [33mPress CTRL+C to quit[0m
-127.0.0.1 - - [12/Oct/2024 19:18:12] "GET /regulation HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:12] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:15] "PUT /update_transport/0 HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:16] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:17] "HEAD /regulation HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:20] "PUT /update_transport/0 HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:21] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:22] "GET /regulation HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:18:22] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /regulation HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:20:00] "GET /list_historique_transports HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:20:05] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:20:05] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [12/Oct/2024 19:20:10] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
-127.0.0.1 - - [12/Oct/2024 19:20:11] "GET /list_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:44] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:44] "GET /list_historique_transports HTTP/1.1" 200 -
