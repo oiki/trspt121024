@@ -6,3 +6,9 @@
 127.0.0.1 - - [12/Oct/2024 19:16:10] "GET /regulation HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:16:10] "GET /list_historique_transports HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:16:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Oct/2024 19:16:14] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:16:14] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:16:15] "GET /list_en_cours_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:16:16] "HEAD /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:16:17] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:16:19] "GET /list_futurs_transports HTTP/1.1" 200 -
