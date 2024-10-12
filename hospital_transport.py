@@ -6,6 +6,10 @@ app = Flask(__name__)
 # In-memory storage for transport requests
 transport_requests = []
 
+@app.route('/')
+def home():
+    return "Welcome to the Hospital Transport Management System!"
+
 @app.route('/add_transport', methods=['POST'])
 def add_transport():
     data = request.get_json()
