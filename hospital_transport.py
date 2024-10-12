@@ -37,5 +37,24 @@ def delete_transport(request_id):
     else:
         return jsonify({'message': 'Transport request not found'}), 404
 
+@app.route('/regulation')
+def regulation():
+    return render_template('regulation.html')
+
+@app.route('/list_historique_transports', methods=['GET'])
+def list_historique_transports():
+    historique_transports = [t for t in transport_requests if t['status'] == 'completed']
+    return jsonify({'transport_requests': historique_transports}), 200
+
+@app.route('/list_en_cours_transports', methods=['GET'])
+def list_en_cours_transports():
+    en_cours_transports = [t for t in transport_requests if t['status'] == 'in_progress']
+    return jsonify({'transport_requests': en_cours_transports}), 200
+
+@app.route('/list_futurs_transports', methods=['GET'])
+def list_futurs_transports():
+    futurs_transports = [t for t in transport_requests if t['status'] == 'pending']
+    return jsonify({'transport_requests': futurs_transports}), 200
+
 if __name__ == '__main__':
     app.run(port=5001)

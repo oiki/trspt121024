@@ -8,3 +8,5 @@
 127.0.0.1 - - [12/Oct/2024 19:11:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 127.0.0.1 - - [12/Oct/2024 19:12:04] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
 127.0.0.1 - - [12/Oct/2024 19:12:06] "GET /list_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:13:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:13:31] "GET /list_transports HTTP/1.1" 200 -
