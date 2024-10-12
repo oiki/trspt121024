@@ -6,3 +6,7 @@
 127.0.0.1 - - [12/Oct/2024 19:06:25] "HEAD / HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:06:30] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:06:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Oct/2024 19:08:46] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Oct/2024 19:08:49] "GET /list_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:08:53] "PUT /update_transport/0 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:08:56] "DELETE /delete_transport/0 HTTP/1.1" 200 -
