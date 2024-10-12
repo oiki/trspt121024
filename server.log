@@ -5,3 +5,24 @@
 [33mPress CTRL+C to quit[0m
 127.0.0.1 - - [12/Oct/2024 19:20:44] "GET /regulation HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:20:44] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:53] "HEAD /transporteur HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:58] "GET /transporteur HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Oct/2024 19:21:04] "GET /list_transports_transporteur?transporteur=John%20Doe HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:21:05] "GET /list_transports_transporteur?transporteur=Jane%20Smith HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:21:07] "GET /list_transports_transporteur?transporteur=Alice%20Johnson HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:21:08] "GET /list_transports_transporteur?transporteur=Bob%20Brown HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:21:47] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Oct/2024 19:21:51] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:21:54] "GET /transporteur HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:01] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:01] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:01] "GET /transporteur HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:04] "GET /list_en_cours_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:05] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:06] "GET /list_futurs_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:09] "PUT /update_transport/0 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:11] "GET /list_futurs_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:19] "GET /list_transports_transporteur?transporteur=John%20Doe HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:22] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:22:22] "GET /list_historique_transports HTTP/1.1" 200 -

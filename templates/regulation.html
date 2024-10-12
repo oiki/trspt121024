@@ -117,6 +117,7 @@
                                     <option value="">Select Brancardier</option>
                                     ${brancardiers.map(brancardier => `<option value="${brancardier}">${brancardier}</option>`).join('')}
                                 </select>
+                                <span id="brancardier_${index}">${transport.brancardier || ''}</span>
                             </td>
                             <td>
                                 <button onclick="updateTransport(${index}, '${tabId}')">Update</button>
@@ -139,6 +140,7 @@
             .then(response => response.json())
             .then(data => {
                 alert(data.message);
+                document.getElementById(`brancardier_${index}`).innerText = brancardier;
                 fetchTransports(tabId);
             });
         }
