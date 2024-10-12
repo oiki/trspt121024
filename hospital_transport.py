@@ -4,7 +4,14 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 # In-memory storage for transport requests
-transport_requests = []
+transport_requests = [
+    {"patient_id": 1, "from": "Radiology", "to": "Cardiology", "status": "completed"},
+    {"patient_id": 2, "from": "Neurology", "to": "Radiology", "status": "in_progress"},
+    {"patient_id": 3, "from": "Cardiology", "to": "Neurology", "status": "pending"},
+    {"patient_id": 4, "from": "Radiology", "to": "Neurology", "status": "completed"},
+    {"patient_id": 5, "from": "Cardiology", "to": "Radiology", "status": "in_progress"},
+    {"patient_id": 6, "from": "Neurology", "to": "Cardiology", "status": "pending"}
+]
 
 @app.route('/')
 def home():
