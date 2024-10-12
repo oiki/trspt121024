@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporteur - Gestion des Transports</title>
+    <style>
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestion des Transports pour Transporteur</h1>
+    <label for="transporteur">Sélectionnez votre profil :</label>
+    <select id="transporteur" name="transporteur" onchange="fetchTransports()">
+        <option value="">Select Transporteur</option>
+        <option value="John Doe">John Doe</option>
+        <option value="Jane Smith">Jane Smith</option>
+        <option value="Alice Johnson">Alice Johnson</option>
+        <option value="Bob Brown">Bob Brown</option>
+    </select>
+
+    <div>
+        <button onclick="showTab('en_cours_futurs')">Transports en Cours et Futurs</button>
+        <button onclick="showTab('historique')">Historique des Transports</button>
+    </div>
+
+    <div id="en_cours_futurs" class="tab">
+        <h2>Transports en Cours et Futurs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du patient</th>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody id="en_cours_futurs_transports"></tbody>
+        </table>
+    </div>
+
+    <div id="historique" class="tab">
+        <h2>Historique des Transports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du patient</th>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody id="historique_transports"></tbody>
+        </table>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            fetchTransports();
+        }
+
+        function fetchTransports() {
+            const transporteur = document.getElementById('transporteur').value;
+            if (!transporteur) return;
+
+            fetch(`/list_transports_transporteur?transporteur=${transporteur}`)
+                .then(response => response.json())
+                .then(data => {
+                    const enCoursFutursTransports = data.transports.filter(t => t.status === 'in_progress' || t.status === 'pending');
+                    const historiqueTransports = data.transports.filter(t => t.status === 'completed');
+
+                    const enCoursFutursTbody = document.getElementById('en_cours_futurs_transports');
+                    enCoursFutursTbody.innerHTML = '';
+                    enCoursFutursTransports.forEach(transport => {
+                        const transportRow = document.createElement('tr');
+                        transportRow.innerHTML = `
+                            <td>${transport.patient_id}</td>
+                            <td>${transport.from}</td>
+                            <td>${transport.to}</td>
+                            <td>${transport.status}</td>
+                        `;
+                        enCoursFutursTbody.appendChild(transportRow);
+                    });
+
+                    const historiqueTbody = document.getElementById('historique_transports');
+                    historiqueTbody.innerHTML = '';
+                    historiqueTransports.forEach(transport => {
+                        const transportRow = document.createElement('tr');
+                        transportRow.innerHTML = `
+                            <td>${transport.patient_id}</td>
+                            <td>${transport.from}</td>
+                            <td>${transport.to}</td>
+                            <td>${transport.status}</td>
+                        `;
+                        historiqueTbody.appendChild(transportRow);
+                    });
+                });
+        }
+
+        // Show the first tab by default
+        showTab('en_cours_futurs');
+    </script>
+</body>
+</html>

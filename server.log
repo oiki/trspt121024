@@ -4,3 +4,14 @@
  * Running on http://127.0.0.1:5001
 [33mPress CTRL+C to quit[0m
 127.0.0.1 - - [12/Oct/2024 19:18:12] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:12] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:15] "PUT /update_transport/0 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:16] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:17] "HEAD /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:20] "PUT /update_transport/0 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:21] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:22] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:18:22] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /regulation HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:00] "GET /list_historique_transports HTTP/1.1" 200 -
