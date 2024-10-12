@@ -12,6 +12,17 @@
         .tab.active {
             display: block;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -23,15 +34,48 @@
     </div>
     <div id="historique" class="tab">
         <h2>Historique des Transports</h2>
-        <div id="historique_transports"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du patient</th>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="historique_transports"></tbody>
+        </table>
     </div>
     <div id="en_cours" class="tab">
         <h2>Transports en Cours</h2>
-        <div id="en_cours_transports"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du patient</th>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="en_cours_transports"></tbody>
+        </table>
     </div>
     <div id="futurs" class="tab">
         <h2>Transports Futurs</h2>
-        <div id="futurs_transports"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID du patient</th>
+                    <th>De</th>
+                    <th>À</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="futurs_transports"></tbody>
+        </table>
     </div>
 
     <script>
@@ -55,14 +99,54 @@
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    const transportDiv = document.getElementById(tabId + '_transports');
-                    transportDiv.innerHTML = '';
-                    data.transport_requests.forEach(transport => {
-                        const transportElement = document.createElement('div');
-                        transportElement.innerHTML = `<p>ID du patient: ${transport.patient_id}, De: ${transport.from}, À: ${transport.to}, Statut: ${transport.status}</p>`;
-                        transportDiv.appendChild(transportElement);
+                    const transportTbody = document.getElementById(tabId + '_transports');
+                    transportTbody.innerHTML = '';
+                    data.transport_requests.forEach((transport, index) => {
+                        const transportRow = document.createElement('tr');
+                        transportRow.innerHTML = `
+                            <td>${transport.patient_id}</td>
+                            <td>${transport.from}</td>
+                            <td>${transport.to}</td>
+                            <td>${transport.status}</td>
+                            <td>
+                                <button onclick="updateTransport(${index}, '${tabId}')">Update</button>
+                                <button onclick="deleteTransport(${index}, '${tabId}')">Delete</button>
+                            </td>
+                        `;
+                        transportTbody.appendChild(transportRow);
                     });
                 });
+        }
+
+        function updateTransport(index, tabId) {
+            const newStatus = prompt("Enter new status:");
+            if (newStatus) {
+                fetch(`/update_transport/${index}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: newStatus })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    fetchTransports(tabId);
+                });
+            }
+        }
+
+        function deleteTransport(index, tabId) {
+            if (confirm("Are you sure you want to delete this transport?")) {
+                fetch(`/delete_transport/${index}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    fetchTransports(tabId);
+                });
+            }
         }
 
         // Show the first tab by default
