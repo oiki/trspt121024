@@ -15,3 +15,7 @@
 127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /regulation HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:19:58] "GET /list_historique_transports HTTP/1.1" 200 -
 127.0.0.1 - - [12/Oct/2024 19:20:00] "GET /list_historique_transports HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:20:10] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Oct/2024 19:20:11] "GET /list_transports HTTP/1.1" 200 -

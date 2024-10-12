@@ -63,5 +63,15 @@ def list_futurs_transports():
     futurs_transports = [t for t in transport_requests if t['status'] == 'pending']
     return jsonify({'transport_requests': futurs_transports}), 200
 
+@app.route('/transporteur')
+def transporteur():
+    return render_template('transporteur.html')
+
+@app.route('/list_transports_transporteur', methods=['GET'])
+def list_transports_transporteur():
+    transporteur = request.args.get('transporteur')
+    transports_transporteur = [t for t in transport_requests if t.get('brancardier') == transporteur]
+    return jsonify({'transports': transports_transporteur}), 200
+
 if __name__ == '__main__':
     app.run(port=5001)
