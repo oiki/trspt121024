@@ -8,7 +8,7 @@ transport_requests = []
 
 @app.route('/')
 def home():
-    return "Welcome to the Hospital Transport Management System!"
+    return render_template('soignant.html')
 
 @app.route('/add_transport', methods=['POST'])
 def add_transport():
