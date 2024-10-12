@@ -3,3 +3,8 @@
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5001
 [33mPress CTRL+C to quit[0m
+127.0.0.1 - - [12/Oct/2024 19:11:39] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:11:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Oct/2024 19:11:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Oct/2024 19:12:04] "[35m[1mPOST /add_transport HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Oct/2024 19:12:06] "GET /list_transports HTTP/1.1" 200 -

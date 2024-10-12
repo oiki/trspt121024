@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Régulation - Gestion des Transports</title>
+    <style>
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Régulation des Transports Internes Hospitaliers</h1>
+    <div>
+        <button onclick="showTab('historique')">Historique des Transports</button>
+        <button onclick="showTab('en_cours')">Transports en Cours</button>
+        <button onclick="showTab('futurs')">Transports Futurs</button>
+    </div>
+    <div id="historique" class="tab">
+        <h2>Historique des Transports</h2>
+        <div id="historique_transports"></div>
+    </div>
+    <div id="en_cours" class="tab">
+        <h2>Transports en Cours</h2>
+        <div id="en_cours_transports"></div>
+    </div>
+    <div id="futurs" class="tab">
+        <h2>Transports Futurs</h2>
+        <div id="futurs_transports"></div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            fetchTransports(tabId);
+        }
+
+        function fetchTransports(tabId) {
+            let url = '';
+            if (tabId === 'historique') {
+                url = '/list_historique_transports';
+            } else if (tabId === 'en_cours') {
+                url = '/list_en_cours_transports';
+            } else if (tabId === 'futurs') {
+                url = '/list_futurs_transports';
+            }
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const transportDiv = document.getElementById(tabId + '_transports');
+                    transportDiv.innerHTML = '';
+                    data.transport_requests.forEach(transport => {
+                        const transportElement = document.createElement('div');
+                        transportElement.innerHTML = `<p>ID du patient: ${transport.patient_id}, De: ${transport.from}, À: ${transport.to}, Statut: ${transport.status}</p>`;
+                        transportDiv.appendChild(transportElement);
+                    });
+                });
+        }
+
+        // Show the first tab by default
+        showTab('historique');
+    </script>
+</body>
+</html>
