@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soignant - Gestion des Transports</title>
+</head>
+<body>
+    <h1>Gestion des Transports Internes Hospitaliers</h1>
+    <label for="service">Sélectionnez votre service de départ :</label>
+    <select id="service" name="service" onchange="fetchTransports()">
+        <option value="Radiology">Radiology</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Neurology">Neurology</option>
+        <!-- Ajoutez d'autres services ici -->
+    </select>
+
+    <h2>Transports passés et à venir</h2>
+    <div id="transports"></div>
+
+    <h2>Demande de Transport</h2>
+    <form id="transportForm" onsubmit="submitTransport(event)">
+        <input type="hidden" id="from" name="from">
+        <label for="patient_id">ID du patient :</label>
+        <input type="text" id="patient_id" name="patient_id" required><br>
+        <label for="to">Destination :</label>
+        <input type="text" id="to" name="to" required><br>
+        <label for="status">Statut :</label>
+        <input type="text" id="status" name="status" value="pending" readonly><br>
+        <button type="submit">Soumettre</button>
+    </form>
+
+    <script>
+        function fetchTransports() {
+            const service = document.getElementById('service').value;
+            document.getElementById('from').value = service;
+            fetch(`/list_transports`)
+                .then(response => response.json())
+                .then(data => {
+                    const transports = data.transport_requests.filter(request => request.from === service);
+                    const transportDiv = document.getElementById('transports');
+                    transportDiv.innerHTML = '';
+                    transports.forEach(transport => {
+                        const transportElement = document.createElement('div');
+                        transportElement.innerHTML = `<p>ID du patient: ${transport.patient_id}, De: ${transport.from}, À: ${transport.to}, Statut: ${transport.status}</p>`;
+                        transportDiv.appendChild(transportElement);
+                    });
+                });
+        }
+
+        function submitTransport(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById('transportForm'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            fetch('/add_transport', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchTransports();
+            });
+        }
+    </script>
+</body>
+</html>
